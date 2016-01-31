@@ -11,8 +11,12 @@ $(document).ready(function() {
     myFirebaseRef.child("workTime").child("totalTime").on("value", function(snapshot) {
         $(".work").html(snapshot.val().toFixed(2));
     });
-    
+
     myFirebaseRef.child("wasteTime").child("totalTime").on("value", function(snapshot) {
         $(".waste").html(snapshot.val().toFixed(2));
+    });
+
+    $('.scrollbtn').on("click", function(e) {
+        e.preventDefault();
     });
 });

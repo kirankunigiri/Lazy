@@ -129,9 +129,9 @@ override func didReceiveMemoryWarning() {
 }
     
     func updateFirebase() {
-        myRootRef.childByAppendingPath("workTime").childByAppendingPath("totalTime").setValue(self.workTimer.getTimeInMilliseconds() + self.oldWorkTime)
-        myRootRef.childByAppendingPath("wasteTime").childByAppendingPath("totalTime").setValue(self.wasteTimer.getTimeInMilliseconds() + self.oldWasteTime)
-        loadFirstTimer()
+//        myRootRef.childByAppendingPath("workTime").childByAppendingPath("totalTime").setValue(self.workTimer.getTimeInMilliseconds() + self.oldWorkTime)
+//        myRootRef.childByAppendingPath("wasteTime").childByAppendingPath("totalTime").setValue(self.wasteTimer.getTimeInMilliseconds() + self.oldWasteTime)
+//        loadFirstTimer()
     }
 
 @IBAction func motivateButtonPressed(sender: UIButton) {
