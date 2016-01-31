@@ -7,9 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F7ACF671C5E35BC006C959F /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F7ACF661C5E35BC006C959F /* RealmSwift.framework */; };
+		9F7ACF681C5E35BC006C959F /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9F7ACF661C5E35BC006C959F /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9F7ACF6B1C5E4240006C959F /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F7ACF6A1C5E4240006C959F /* Firebase.framework */; };
+		9F7ACF6D1C5E4271006C959F /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F7ACF6C1C5E4271006C959F /* libicucore.tbd */; };
+		9F7ACF6F1C5E427C006C959F /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F7ACF6E1C5E427C006C959F /* libc++.tbd */; };
+		9F7ACF711C5E4281006C959F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F7ACF701C5E4281006C959F /* CFNetwork.framework */; };
+		9F7ACF731C5E4286006C959F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F7ACF721C5E4286006C959F /* Security.framework */; };
+		9F7ACF751C5E428B006C959F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F7ACF741C5E428B006C959F /* SystemConfiguration.framework */; };
 		9FA5BA0E1C5DD87D00BD0D1F /* PaintChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA5BA0D1C5DD87D00BD0D1F /* PaintChart.swift */; };
 		9FA5BA101C5DD92A00BD0D1F /* Chart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA5BA0F1C5DD92A00BD0D1F /* Chart.swift */; };
 		9FA5BA161C5DE5C700BD0D1F /* PaintMotivate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA5BA151C5DE5C700BD0D1F /* PaintMotivate.swift */; };
+		9FA5BA181C5E178C00BD0D1F /* TimeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA5BA171C5E178C00BD0D1F /* TimeController.swift */; };
 		9FD7EF941C5DB4A10061256D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD7EF931C5DB4A10061256D /* AppDelegate.swift */; };
 		9FD7EF961C5DB4A10061256D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD7EF951C5DB4A10061256D /* HomeViewController.swift */; };
 		9FD7EF991C5DB4A10061256D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FD7EF971C5DB4A10061256D /* Main.storyboard */; };
@@ -37,10 +46,32 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		9F7ACF691C5E35BC006C959F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				9F7ACF681C5E35BC006C959F /* RealmSwift.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		9F7ACF661C5E35BC006C959F /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
+		9F7ACF6A1C5E4240006C959F /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Firebase.framework; sourceTree = "<group>"; };
+		9F7ACF6C1C5E4271006C959F /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
+		9F7ACF6E1C5E427C006C959F /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		9F7ACF701C5E4281006C959F /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		9F7ACF721C5E4286006C959F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		9F7ACF741C5E428B006C959F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		9FA5BA0D1C5DD87D00BD0D1F /* PaintChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaintChart.swift; sourceTree = "<group>"; };
 		9FA5BA0F1C5DD92A00BD0D1F /* Chart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chart.swift; sourceTree = "<group>"; };
 		9FA5BA151C5DE5C700BD0D1F /* PaintMotivate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaintMotivate.swift; sourceTree = "<group>"; };
+		9FA5BA171C5E178C00BD0D1F /* TimeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeController.swift; sourceTree = "<group>"; };
 		9FD7EF901C5DB4A10061256D /* Lazy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lazy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FD7EF931C5DB4A10061256D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9FD7EF951C5DB4A10061256D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -62,6 +93,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F7ACF751C5E428B006C959F /* SystemConfiguration.framework in Frameworks */,
+				9F7ACF731C5E4286006C959F /* Security.framework in Frameworks */,
+				9F7ACF711C5E4281006C959F /* CFNetwork.framework in Frameworks */,
+				9F7ACF6F1C5E427C006C959F /* libc++.tbd in Frameworks */,
+				9F7ACF6D1C5E4271006C959F /* libicucore.tbd in Frameworks */,
+				9F7ACF671C5E35BC006C959F /* RealmSwift.framework in Frameworks */,
+				9F7ACF6B1C5E4240006C959F /* Firebase.framework in Frameworks */,
 				9FD7EFC21C5DB65D0061256D /* C4.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -83,6 +121,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9F7ACF761C5E43B3006C959F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9F7ACF741C5E428B006C959F /* SystemConfiguration.framework */,
+				9F7ACF721C5E4286006C959F /* Security.framework */,
+				9F7ACF701C5E4281006C959F /* CFNetwork.framework */,
+				9F7ACF6E1C5E427C006C959F /* libc++.tbd */,
+				9F7ACF6C1C5E4271006C959F /* libicucore.tbd */,
+				9F7ACF6A1C5E4240006C959F /* Firebase.framework */,
+				9F7ACF661C5E35BC006C959F /* RealmSwift.framework */,
+				9FD7EFC11C5DB65D0061256D /* C4.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		9FA5BA141C5DE50700BD0D1F /* PaintViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -96,7 +149,7 @@
 		9FD7EF871C5DB4A10061256D = {
 			isa = PBXGroup;
 			children = (
-				9FD7EFC11C5DB65D0061256D /* C4.framework */,
+				9F7ACF761C5E43B3006C959F /* Frameworks */,
 				9FD7EF921C5DB4A10061256D /* Lazy */,
 				9FD7EFA71C5DB4A10061256D /* LazyTests */,
 				9FD7EFB21C5DB4A10061256D /* LazyUITests */,
@@ -120,6 +173,7 @@
 				9FD7EF931C5DB4A10061256D /* AppDelegate.swift */,
 				9FD7EF971C5DB4A10061256D /* Main.storyboard */,
 				9FD7EF951C5DB4A10061256D /* HomeViewController.swift */,
+				9FA5BA171C5E178C00BD0D1F /* TimeController.swift */,
 				9FA5BA141C5DE50700BD0D1F /* PaintViews */,
 				9FD7EF9A1C5DB4A10061256D /* Assets.xcassets */,
 				9FD7EF9C1C5DB4A10061256D /* LaunchScreen.storyboard */,
@@ -157,6 +211,7 @@
 				9FD7EF8D1C5DB4A10061256D /* Frameworks */,
 				9FD7EF8E1C5DB4A10061256D /* Resources */,
 				9FD7EFC31C5DB66B0061256D /* ShellScript */,
+				9F7ACF691C5E35BC006C959F /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -281,6 +336,8 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/C4.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
 			);
 			outputPaths = (
 			);
@@ -300,6 +357,7 @@
 				9FA5BA161C5DE5C700BD0D1F /* PaintMotivate.swift in Sources */,
 				9FD7EF941C5DB4A10061256D /* AppDelegate.swift in Sources */,
 				9FA5BA0E1C5DD87D00BD0D1F /* PaintChart.swift in Sources */,
+				9FA5BA181C5E178C00BD0D1F /* TimeController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -444,6 +502,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Lazy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -459,6 +518,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Lazy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

@@ -7,15 +7,19 @@
 //
 
 import UIKit
+import Firebase
+
+var myRootRef = Firebase(url:"https://lazyapp.firebaseio.com/")
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        Firebase.defaultConfig().persistenceEnabled = true
         return true
     }
 
@@ -27,6 +31,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        var mainVC: HomeViewController = UIApplication.sharedApplication().keyWindow?.rootViewController as! HomeViewController
+        myRootRef.childByAppendingPath("workTime").childByAppendingPath("totalTime").setValue(mainVC.workTimer.numMillSeconds + mainVC.oldWorkTime)
+        myRootRef.childByAppendingPath("wasteTime").childByAppendingPath("totalTime").setValue(mainVC.wasteTimer.numMillSeconds + mainVC.oldWasteTime)
+        mainVC.wasteTimer.stop()
+        mainVC.workTimer.stop()
     }
 
     func applicationWillEnterForeground(application: UIApplication) {

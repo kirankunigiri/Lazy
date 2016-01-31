@@ -8,51 +8,157 @@
 
 import UIKit
 import C4
+import Firebase
 
 class HomeViewController: UIViewController {
-
+    
     // Connection
     @IBOutlet var settingsButton: UIButton!
     @IBOutlet var modeLabel: UILabel!
     @IBOutlet var timeLabel: UILabel!
-    @IBOutlet var chartView: PaintChart!
+    @IBOutlet var chartButton: PaintChart!
     @IBOutlet var motivateButton: PaintMotivate!
     @IBOutlet var motivateLabel: UILabel!
+    @IBOutlet var motivateView: UIView!
+    var motivateView2: C4View!
+    var blurView: UIVisualEffectView!
     
     // Properties
-    var ratio: CGFloat = 0;
+    var loading = true
+    var workTimer: Stopwatch!
+    var wasteTimer: Stopwatch!
+    var mode = -1
+    let kWorkMode = -1
+    let kWasteMode = 1
+    var motivateState = -1
+    
+    var oldWorkTime: NSTimeInterval!
+    var oldWasteTime: NSTimeInterval!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        loadFirstTimer()
         
-//        let inner = C4Circle(center: C4Point(canvas.center.x, canvas.center.y + 20), radius: (canvas.width - 130)/2)
-//        inner.fillColor = C4Color.init(UIColor(red:0.200, green:0.286, blue:0.365, alpha:1))
-//        inner.lineWidth = 15
-//        inner.strokeColor = C4Color.init(UIColor(red:0.102, green:0.737, blue:0.612, alpha:1))
-//        inner.interactionEnabled = false
-//        
-//        canvas.add(inner)
-//        canvas.sendToBack(inner)
+        motivateView2 = C4View(view: motivateView)
+        motivateView2.size = C4Size(200, 200)
+        motivateView2.border.radius = 10
+        
+        var darkBlur = UIBlurEffect(style: UIBlurEffectStyle.Dark)
+        blurView = UIVisualEffectView(effect: darkBlur)
+        blurView.frame = self.view.bounds
+        blurView.alpha = 0
+        
+        blurView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "handleTap:"))
+    }
+    
+    func handleTap(sender: UITapGestureRecognizer) {
+        if sender.state == .Ended {
+            C4ViewAnimation(duration: 0.25) {
+                self.motivateView2.opacity = 0
+                self.blurView.alpha = 0
+                }.animate()
+            
+        }
+    }
 
-        NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "animate", userInfo: nil, repeats: true)
+func loadFirstTimer() {
+    myRootRef.childByAppendingPath("workTime").observeEventType(.Value, withBlock: { snapshot in
+        self.oldWorkTime = (snapshot.value as! NSDictionary).valueForKeyPath("totalTime") as! NSTimeInterval
+        self.loadSecondTimer()
+        
+        }, withCancelBlock: { error in
+            print("error")
+    })
+}
+
+func loadSecondTimer() {
+    myRootRef.childByAppendingPath("wasteTime").observeEventType(.Value, withBlock: { snapshot in
+        self.oldWasteTime = (snapshot.value as! NSDictionary).valueForKeyPath("totalTime") as! NSTimeInterval
+        
+        self.wasteTimer = Stopwatch(closure: { () -> (Void) in
+            if !self.loading {
+                let first = CGFloat(self.wasteTimer.getTimeInMilliseconds() + self.oldWasteTime)
+                let second = first + CGFloat(self.workTimer.getTimeInMilliseconds() + self.oldWorkTime)
+                self.chartButton.setNewRatio(first/second)
+                self.timeLabel.text = Converter.toStringDisplay(CGFloat(self.wasteTimer.getTimeInMilliseconds() + self.oldWasteTime))
+            }
+        })
+        
+        self.workTimer = Stopwatch(
+            closure: { () -> (Void) in
+                if !self.loading {
+                    let first = CGFloat(self.wasteTimer.getTimeInMilliseconds() + self.oldWasteTime)
+                    let second = first + CGFloat(self.workTimer.getTimeInMilliseconds() + self.oldWorkTime)
+                    self.chartButton.setNewRatio(first/second)
+                    self.timeLabel.text = Converter.toStringDisplay(CGFloat(self.workTimer.getTimeInMilliseconds() + self.oldWorkTime))
+                }
+        })
+        
+        self.workTimer.start()
+        self.loading = false
+        
+        }, withCancelBlock: { error in
+            print("error")
+    })
+}
+
+override func didReceiveMemoryWarning() {
+    super.didReceiveMemoryWarning()
+    // Dispose of any resources that can be recreated.
+}
+
+
+@IBAction func chartButtonPressed(sender: UIButton) {
+    if loading {
+        return
+    } else {
+        
+        mode *= -1
+        chartButton.switchMode()
+        
+        if mode == kWorkMode {
+            wasteTimer.pause()
+            workTimer.start()
+        }
+        if mode == kWasteMode {
+            workTimer.pause()
+            wasteTimer.start()
+        }
+        updateFirebase()
+    }
+}
+    
+    func updateFirebase() {
+        myRootRef.childByAppendingPath("workTime").childByAppendingPath("totalTime").setValue(self.workTimer.getTimeInMilliseconds() + self.oldWorkTime)
+        myRootRef.childByAppendingPath("wasteTime").childByAppendingPath("totalTime").setValue(self.wasteTimer.getTimeInMilliseconds() + self.oldWasteTime)
+        loadFirstTimer()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+@IBAction func motivateButtonPressed(sender: UIButton) {
+    if motivateState == -1 {
+        canvas.add(blurView)
+        canvas.add(motivateView2)
+        C4ViewAnimation(duration: 0.25) {
+            self.motivateView2.center = self.canvas.center
+            self.motivateView2.opacity = 1
+            self.blurView.alpha = 1
+            }.animate()
+    }
+    if motivateState == 1 {
+        //            canvas.add(blur)
     }
     
-    func animate() {
-        chartView.setNewRatio(ratio + 0.05)
-        chartView.setNeedsDisplay()
-        ratio += 0.001
-    }
-    
-    @IBAction func motivateButtonPressed(sender: UIButton) {
-        print("Pressed motivate button")
-    }
-    
+    motivateState *= -1
+}
+
 
 
 }
+
+
+
+
+
+
+
+

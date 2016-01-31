@@ -1,0 +1,35 @@
+p {
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 0.5em;
+    font-size: 5em;
+}
+
+.title {
+    font-size: 6em;
+    margin-top: 0.5em;
+}
+
+.work {
+    color: #1abc9c;
+}
+
+.waste {
+	color: #FF366B;
+}
+
+.motivateBtn {
+    position: absolute;
+    width: 4em;
+    height: 4em;
+    bottom: 2em;
+    left: 2em;
+}
+
+.motivateMe {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    font-size: 2em;
+}

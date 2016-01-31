@@ -34,14 +34,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wqm-Kt-H5u" customClass="PaintChart" customModule="Lazy" customModuleProvider="target">
-                                <rect key="frame" x="200" y="220" width="200" height="200"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="20N-5g-gPL"/>
-                                    <constraint firstAttribute="width" constant="200" id="PyF-Kc-spZ"/>
-                                </constraints>
-                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Motivate Me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E5C-L1-uEr">
                                 <rect key="frame" x="251" y="555" width="97.5" height="23"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="20"/>
@@ -58,33 +50,77 @@
                                     <action selector="motivateButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ruf-yT-9du"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hb6-6J-R5t" customClass="PaintChart" customModule="Lazy" customModuleProvider="target">
+                                <rect key="frame" x="200" y="220" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="eqi-rE-Bm3"/>
+                                    <constraint firstAttribute="height" constant="200" id="imA-ZL-SLL"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="chartButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="h43-Qu-Acb"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Hb6-6J-R5t" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="20" id="1kr-jJ-sVw"/>
+                            <constraint firstItem="Hb6-6J-R5t" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="KqA-fR-GVh"/>
                             <constraint firstItem="V1G-sp-XNi" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="M1a-cm-Ik7"/>
                             <constraint firstItem="2hC-j9-T8q" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="QgE-4M-vme"/>
                             <constraint firstItem="E5C-L1-uEr" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="SzB-uq-NPw"/>
                             <constraint firstItem="E5C-L1-uEr" firstAttribute="top" secondItem="V1G-sp-XNi" secondAttribute="bottom" constant="5" id="ZoD-iv-MAq"/>
                             <constraint firstItem="iP1-sC-ipv" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="10" id="ZsR-QA-cgp"/>
-                            <constraint firstItem="Wqm-Kt-H5u" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="20" id="cbc-M8-e9T"/>
                             <constraint firstItem="2hC-j9-T8q" firstAttribute="top" secondItem="x9r-X8-goF" secondAttribute="bottom" id="eCb-3r-Lg2"/>
                             <constraint firstItem="x9r-X8-goF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="eLb-zM-9kS"/>
                             <constraint firstItem="x9r-X8-goF" firstAttribute="top" secondItem="iP1-sC-ipv" secondAttribute="bottom" constant="5" id="g9z-dO-wft"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="V1G-sp-XNi" secondAttribute="bottom" constant="50" id="gr5-aW-3Ra"/>
                             <constraint firstAttribute="leadingMargin" secondItem="iP1-sC-ipv" secondAttribute="leading" id="oJ4-XC-3VD"/>
-                            <constraint firstItem="Wqm-Kt-H5u" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="poM-ut-fDl"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="chartView" destination="Wqm-Kt-H5u" id="XsF-Yb-BHM"/>
+                        <outlet property="chartButton" destination="Hb6-6J-R5t" id="VKn-Ao-gUx"/>
                         <outlet property="modeLabel" destination="x9r-X8-goF" id="vMi-GP-CDu"/>
                         <outlet property="motivateButton" destination="V1G-sp-XNi" id="YvS-Fn-q1w"/>
                         <outlet property="motivateLabel" destination="E5C-L1-uEr" id="nmG-ic-KIH"/>
+                        <outlet property="motivateView" destination="vpY-TJ-Wbj" id="89p-vS-kna"/>
                         <outlet property="settingsButton" destination="iP1-sC-ipv" id="5dm-ZV-7AJ"/>
                         <outlet property="timeLabel" destination="2hC-j9-T8q" id="Cf8-V5-ChW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="vpY-TJ-Wbj" userLabel="Motivate View">
+                    <rect key="frame" x="0.0" y="0.0" width="328" height="259"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Advice" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NgP-if-lnE">
+                            <rect key="frame" x="111" y="25" width="106" height="46"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="40"/>
+                            <color key="textColor" red="0.99989169836044312" green="1" blue="0.99988096952438354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Minions ipsum nisi irure uuuhhh hana dul sae ullamco reprehenderit magna aliquip " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eOk-FP-RML">
+                            <rect key="frame" x="35" y="100" width="258" height="129"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="20"/>
+                            <color key="textColor" red="0.99989169836044312" green="1" blue="0.99988096952438354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.31239959597587585" green="0.30999594926834106" blue="0.30991435050964355" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="eOk-FP-RML" firstAttribute="leading" secondItem="vpY-TJ-Wbj" secondAttribute="leading" constant="35" id="7DK-UB-LkY"/>
+                        <constraint firstItem="eOk-FP-RML" firstAttribute="top" secondItem="NgP-if-lnE" secondAttribute="bottom" constant="30" id="GDJ-I6-lej"/>
+                        <constraint firstItem="NgP-if-lnE" firstAttribute="top" secondItem="vpY-TJ-Wbj" secondAttribute="top" constant="25" id="H5i-gy-b51"/>
+                        <constraint firstItem="NgP-if-lnE" firstAttribute="centerX" secondItem="vpY-TJ-Wbj" secondAttribute="centerX" id="LOj-8p-XGI"/>
+                        <constraint firstAttribute="bottom" secondItem="eOk-FP-RML" secondAttribute="bottom" constant="30" id="bDC-1m-29L"/>
+                        <constraint firstItem="eOk-FP-RML" firstAttribute="top" secondItem="vpY-TJ-Wbj" secondAttribute="top" constant="100" id="hWo-eo-t0T"/>
+                        <constraint firstAttribute="trailing" secondItem="eOk-FP-RML" secondAttribute="trailing" constant="35" id="nfp-bN-CZC"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="GDJ-I6-lej"/>
+                        </mask>
+                    </variation>
+                </view>
             </objects>
             <point key="canvasLocation" x="305" y="341"/>
         </scene>
