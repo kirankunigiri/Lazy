@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="Lazy" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +17,79 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iP1-sC-ipv" userLabel="Settings">
+                                <rect key="frame" x="20" y="30" width="33" height="33"/>
+                                <state key="normal" image="settings"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Working" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x9r-X8-goF">
+                                <rect key="frame" x="248" y="68" width="103.5" height="37"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="32"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="135" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2hC-j9-T8q">
+                                <rect key="frame" x="250" y="105" width="100.5" height="69"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="60"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wqm-Kt-H5u" customClass="PaintChart" customModule="Lazy" customModuleProvider="target">
+                                <rect key="frame" x="200" y="220" width="200" height="200"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="20N-5g-gPL"/>
+                                    <constraint firstAttribute="width" constant="200" id="PyF-Kc-spZ"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Motivate Me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E5C-L1-uEr">
+                                <rect key="frame" x="251" y="555" width="97.5" height="23"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="20"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V1G-sp-XNi" customClass="PaintMotivate" customModule="Lazy" customModuleProvider="target">
+                                <rect key="frame" x="275" y="500" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="WM2-PM-G5K"/>
+                                    <constraint firstAttribute="height" constant="50" id="Xrx-QI-GKC"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="motivateButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ruf-yT-9du"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="V1G-sp-XNi" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="M1a-cm-Ik7"/>
+                            <constraint firstItem="2hC-j9-T8q" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="QgE-4M-vme"/>
+                            <constraint firstItem="E5C-L1-uEr" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="SzB-uq-NPw"/>
+                            <constraint firstItem="E5C-L1-uEr" firstAttribute="top" secondItem="V1G-sp-XNi" secondAttribute="bottom" constant="5" id="ZoD-iv-MAq"/>
+                            <constraint firstItem="iP1-sC-ipv" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="10" id="ZsR-QA-cgp"/>
+                            <constraint firstItem="Wqm-Kt-H5u" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="20" id="cbc-M8-e9T"/>
+                            <constraint firstItem="2hC-j9-T8q" firstAttribute="top" secondItem="x9r-X8-goF" secondAttribute="bottom" id="eCb-3r-Lg2"/>
+                            <constraint firstItem="x9r-X8-goF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="eLb-zM-9kS"/>
+                            <constraint firstItem="x9r-X8-goF" firstAttribute="top" secondItem="iP1-sC-ipv" secondAttribute="bottom" constant="5" id="g9z-dO-wft"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="V1G-sp-XNi" secondAttribute="bottom" constant="50" id="gr5-aW-3Ra"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="iP1-sC-ipv" secondAttribute="leading" id="oJ4-XC-3VD"/>
+                            <constraint firstItem="Wqm-Kt-H5u" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="poM-ut-fDl"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="chartView" destination="Wqm-Kt-H5u" id="XsF-Yb-BHM"/>
+                        <outlet property="modeLabel" destination="x9r-X8-goF" id="vMi-GP-CDu"/>
+                        <outlet property="motivateButton" destination="V1G-sp-XNi" id="YvS-Fn-q1w"/>
+                        <outlet property="motivateLabel" destination="E5C-L1-uEr" id="nmG-ic-KIH"/>
+                        <outlet property="settingsButton" destination="iP1-sC-ipv" id="5dm-ZV-7AJ"/>
+                        <outlet property="timeLabel" destination="2hC-j9-T8q" id="Cf8-V5-ChW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="305" y="341"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="settings" width="33" height="33"/>
+    </resources>
 </document>
